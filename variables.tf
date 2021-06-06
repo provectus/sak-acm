@@ -51,3 +51,9 @@ variable "tags" {
   default     = {}
   description = "A tags for attaching to new created AWS resources"
 }
+
+variable "internal" {
+  type        = bool
+  default     = false
+  description = "Internal or external mode"
+}
