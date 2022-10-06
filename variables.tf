@@ -25,7 +25,7 @@ variable "cluster_name" {
 variable "chart_version" {
   type        = string
   description = "A Helm Chart version"
-  default     = "2.16.0"
+  default     = "4.3.0"
 }
 
 variable "aws_private" {
