@@ -2,7 +2,7 @@
 
 Based on <https://kubernetes.github.io/ingress-nginx>
 
-## Example with TLS offloadissues/223
+## For Example with TLS offload
 
 ``` hcl
 module "nginx" {
