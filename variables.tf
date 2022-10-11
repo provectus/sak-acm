@@ -16,12 +16,6 @@ variable "module_depends_on" {
   description = "A list of explicit dependencies"
 }
 
-variable "cluster_name" {
-  type        = string
-  default     = null
-  description = "A name of the Amazon EKS cluster"
-}
-
 variable "chart_version" {
   type        = string
   description = "A Helm Chart version"

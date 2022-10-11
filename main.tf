@@ -1,7 +1,3 @@
-data "aws_eks_cluster" "this" {
-  name = var.cluster_name
-}
-
 resource "kubernetes_namespace" "this" {
   depends_on = [
     var.module_depends_on
