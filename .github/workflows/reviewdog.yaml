@@ -26,7 +26,8 @@ jobs:
       # Run init to get module code to be able to use `--module`
       - name: Terraform init common
         run: |
-          cd $TF_DIR && terraform init --upgrade
+          terraform init --upgrade
+          tflint --init
 
       # More complex example
       - name: tflint common
