@@ -17,7 +17,7 @@ module "nginx" {
     "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol" = "http"
     "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"        = "https"
   }
-  tags = local.tags
+  tags = {}
 }
 ```
 
@@ -29,7 +29,7 @@ module "nginx" {
   cluster_name = module.kubernetes.cluster_name
   argocd       = module.argocd.state
   conf = {}
-  tags = local.tags
+  tags = {}
 }
 ```
 
