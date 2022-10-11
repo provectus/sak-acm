@@ -24,7 +24,7 @@ jobs:
       # Note: Terraform is not needed for tflint
       - name: Install Terraform
         run: |
-          brew install tfenv
+          apt-get install tfenv
           tfenv install ${TERRAFORM_VERSION}
 
       # Run init to get module code to be able to use `--module`
