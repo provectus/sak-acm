@@ -7,7 +7,7 @@ Based on <https://kubernetes.github.io/ingress-nginx>
 ``` hcl
 module "nginx" {
   depends_on   = [module.sak-acm]
-  source       = "git::https://github.com/provectus/sak-nginx.git"
+  source       = "https://github.com/provectus/sak-nginx.git"
   cluster_name = module.kubernetes.cluster_name
   argocd       = module.argocd.state
   conf = {
@@ -25,7 +25,7 @@ module "nginx" {
 
 ``` hcl
 module "nginx" {
-  source       = "git::https://github.com/provectus/sak-nginx.git"
+  source       = "https://github.com/provectus/sak-nginx.git"
   cluster_name = module.kubernetes.cluster_name
   argocd       = module.argocd.state
   conf = {}
