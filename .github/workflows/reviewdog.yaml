@@ -13,25 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone repo
-        uses: actions/checkout@master
+    - uses: actions/checkout@v2
+      name: Checkout source code
 
-      - name: Terraform Install
-        uses: hashicorp/setup-terraform@v2
+    - uses: actions/cache@v2
+      name: Cache plugin dir
+      with:
+        path: ~/.tflint.d/plugins
+        key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
 
-      - name: Terraform format
-        id: fmt
-        run: terraform fmt -check
+    - uses: terraform-linters/setup-tflint@v2
+      name: Setup TFLint
+      with:
+        tflint_version: v0.38.1
 
-      # Run init to get module code to be able to use `--module`
-      - name: Terraform init common
-        run: |
-          terraform init --upgrade
-          tflint --init
+    - name: Show version
+      run: tflint --version
 
-      # More complex example
-      - name: tflint common
-        uses: reviewdog/action-tflint@master
+    - name: Init TFLint
+      run: tflint --init
+
+    - name: Run TFLint
+      run: tflint -f compact
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review # Optional. Change reporter
