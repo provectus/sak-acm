@@ -22,12 +22,6 @@ variable "chart_version" {
   default     = "4.3.0"
 }
 
-variable "unused_chart_version" {
-  type        = string
-  description = "A Helm Chart version"
-  default     = "4.3.0"
-}
-
 variable "aws_private" {
   type        = bool
   description = "Set true or false to use private or public infrastructure"
