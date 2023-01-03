@@ -45,7 +45,6 @@ module "nginx" {
 |------|-------------|------|---------|:-----:|
 | argocd | A set of values for enabling deployment through ArgoCD | `map(string)` | `{}` | no |
 | aws\_private | Set true or false to use private or public infrastructure | `bool` | `false` | no |
-| cluster\_name | The name of the cluster the charts will be deployed to | `string` | n/a | yes |
 | conf | A set of parameters to pass to Nginx Ingress Controller chart | `map` | `{}` | no |
 | module\_depends\_on | A list of explicit dependencies for the module | `list` | `[]` | no |
 | namespace | A name of the existing namespace | `string` | `""` | no |
