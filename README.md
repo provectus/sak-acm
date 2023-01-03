@@ -8,7 +8,6 @@ Based on <https://kubernetes.github.io/ingress-nginx>
 module "nginx" {
   depends_on   = [module.sak-acm]
   source       = "https://github.com/provectus/sak-nginx.git"
-  cluster_name = module.kubernetes.cluster_name
   argocd       = module.argocd.state
   conf = {
     "controller.service.targetPorts.http"                                                                = "http"
@@ -26,7 +25,6 @@ module "nginx" {
 ``` hcl
 module "nginx" {
   source       = "https://github.com/provectus/sak-nginx.git"
-  cluster_name = module.kubernetes.cluster_name
   argocd       = module.argocd.state
   conf = {}
   tags = {}

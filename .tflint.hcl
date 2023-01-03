@@ -2,7 +2,6 @@ config {
   module = true
   force = false
   disabled_by_default = false
-  variables = ["cluster_name=github-actions-cluster"]
 }
 
 plugin "aws" {
