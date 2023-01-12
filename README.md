@@ -24,7 +24,7 @@ module "nginx" {
 
 ``` hcl
 module "nginx" {
-  source       = "https://github.com/provectus/sak-nginx.git"
+  source       = "github.com/provectus/sak-nginx.git"
   argocd       = module.argocd.state
   conf = {}
   tags = {}
