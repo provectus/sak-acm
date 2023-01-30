@@ -1,3 +1,18 @@
+## Requirements
+
+```
+terraform >= 1.1
+ ```
+
+ 
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | >= 3.0 |
+| helm | >= 1.0 |
+| kubernetes | >= 1.11 |
+| local | >=2.1.0 |
 # Nginx Ingress Controller
 
 Based on <https://kubernetes.github.io/ingress-nginx>
