@@ -1,3 +1,11 @@
+# Swiss Army Kube nginx module
+
+This module was created to deploy nginx within Swiss Army Kube cluster with ease and simplicity.
+Check out main repo of Swiss Army Kube for more information about the project in general.
+
+**[Swiss Army Kube](https://github.com/provectus/swiss-army-kube)**
+**[Contributing Guide](https://github.com/provectus/swiss-army-kube/blob/master/CONTRIBUTING.md)**
+
 ## Requirements
 
 ```
