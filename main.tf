@@ -1,13 +1,3 @@
-resource "kubernetes_namespace" "this" {
-  depends_on = [
-    var.module_depends_on
-  ]
-  count = var.namespace == "" ? 1 : 0
-  metadata {
-    name = var.namespace_name
-  }
-}
-
 resource "helm_release" "this" {
   count = 1 - local.argocd_enabled
   depends_on = [
@@ -38,12 +28,11 @@ resource "local_file" "this" {
 
 locals {
   argocd_enabled = length(var.argocd) > 0 ? 1 : 0
-  namespace      = coalescelist(kubernetes_namespace.this, [{ "metadata" = [{ "name" = var.namespace }] }])[0].metadata[0].name
-
-  name       = var.internal ? "internal-nginx" : "ingress-nginx"
-  repository = "https://kubernetes.github.io/ingress-nginx"
-  chart      = "ingress-nginx"
-  version    = var.chart_version
+  namespace      = var.namespace 
+  name           = var.internal ? "internal-nginx" : "ingress-nginx"
+  repository     = "https://kubernetes.github.io/ingress-nginx"
+  chart          = "ingress-nginx"
+  version        = var.chart_version
 
 
   app = {
@@ -79,6 +68,9 @@ locals {
           "selfHeal" = true
         }
       }
+      "syncOptions" = {
+      "createNamespace" = true
+    }
     }
   }
 
