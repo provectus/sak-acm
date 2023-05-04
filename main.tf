@@ -28,7 +28,7 @@ resource "local_file" "this" {
 
 locals {
   argocd_enabled = length(var.argocd) > 0 ? 1 : 0
-  namespace      = var.namespace 
+  namespace      = var.namespace
   name           = var.internal ? "internal-nginx" : "ingress-nginx"
   repository     = "https://kubernetes.github.io/ingress-nginx"
   chart          = "ingress-nginx"
@@ -67,10 +67,9 @@ locals {
           "prune"    = true
           "selfHeal" = true
         }
-      }
-      "syncOptions" = {
-      "createNamespace" = true
-    }
+        "syncOptions" = {
+          "createNamespace" = true
+      } }
     }
   }
 
