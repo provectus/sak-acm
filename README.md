@@ -4,30 +4,31 @@ This module was created to deploy nginx within Swiss Army Kube cluster with ease
 Check out main repo of Swiss Army Kube for more information about the project in general.
 
 **[Swiss Army Kube](https://github.com/provectus/swiss-army-kube)**
+|
 **[Contributing Guide](https://github.com/provectus/swiss-army-kube/blob/master/CONTRIBUTING.md)**
 
 ## Requirements
 
 ```
 terraform >= 1.1
- ```
+```
 
- 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| aws | >= 3.0 |
-| helm | >= 1.0 |
+| Name       | Version |
+| ---------- | ------- |
+| aws        | >= 3.0  |
+| helm       | >= 1.0  |
 | kubernetes | >= 1.11 |
-| local | >=2.1.0 |
+| local      | >=2.1.0 |
+
 # Nginx Ingress Controller
 
 Based on <https://kubernetes.github.io/ingress-nginx>
 
 ## For Example with TLS offload
 
-``` hcl
+```hcl
 module "nginx" {
   depends_on   = [module.sak-acm]
   source       = "https://github.com/provectus/sak-nginx.git"
@@ -45,7 +46,7 @@ module "nginx" {
 
 ## Example without SSL or with cert-manager
 
-``` hcl
+```hcl
 module "nginx" {
   source       = "github.com/provectus/sak-nginx.git"
   argocd       = module.argocd.state
@@ -56,22 +57,22 @@ module "nginx" {
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| helm | n/a |
-| kubernetes | n/a |
-| local | n/a |
+| Name       | Version |
+| ---------- | ------- |
+| helm       | n/a     |
+| kubernetes | n/a     |
+| local      | n/a     |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| argocd | A set of values for enabling deployment through ArgoCD | `map(string)` | `{}` | no |
-| aws\_private | Set true or false to use private or public infrastructure | `bool` | `false` | no |
-| conf | A set of parameters to pass to Nginx Ingress Controller chart | `map` | `{}` | no |
-| module\_depends\_on | A list of explicit dependencies for the module | `list` | `[]` | no |
-| namespace | A name of the existing namespace | `string` | `""` | no |
-| namespace\_name | A name of namespace for creating | `string` | `"ingress-system"` | no |
+| Name              | Description                                                   | Type          | Default            | Required |
+| ----------------- | ------------------------------------------------------------- | ------------- | ------------------ | :------: |
+| argocd            | A set of values for enabling deployment through ArgoCD        | `map(string)` | `{}`               |    no    |
+| aws_private       | Set true or false to use private or public infrastructure     | `bool`        | `false`            |    no    |
+| conf              | A set of parameters to pass to Nginx Ingress Controller chart | `map`         | `{}`               |    no    |
+| module_depends_on | A list of explicit dependencies for the module                | `list`        | `[]`               |    no    |
+| namespace         | A name of the existing namespace                              | `string`      | `""`               |    no    |
+| namespace_name    | A name of namespace for creating                              | `string`      | `"ingress-system"` |    no    |
 
 ## Outputs
 
@@ -81,7 +82,7 @@ No output.
 
 - Found the latest stable version of the helm chart from <https://github.com/kubernetes/ingress-nginx/releases>
 - Change the version in the default section, example:
-To test the SAK_NGINX module
+  To test the SAK_NGINX module
 
 - Deploy SAK-NGINX by SAK (namespace ingress-system)
 - Deploy sample backend app:
@@ -91,6 +92,6 @@ kubectl create deployment web --image=registry.k8s.io/echoserver:1.4 --namespace
 kubectl expose deployment web --type=NodePort --port=8080 --namespace ingress-system
 ```
 
-- Get published hostname from column EXTERNAL-IP of ingress-Nginx: ```kubectl get svc -n ingress-system```
+- Get published hostname from column EXTERNAL-IP of ingress-Nginx: `kubectl get svc -n ingress-system`
 - Publish web app on ingress controller:
 - Check the web app from <http://EXTERNAL-IP>
